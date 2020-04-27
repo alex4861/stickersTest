@@ -1,6 +1,12 @@
+import 'dart:io';
+
+import 'package:apptesting/BaseComponents/AppStandardBar.dart';
+import 'package:apptesting/BaseComponents/CupertinoStandardBar.dart';
+import 'package:apptesting/BaseComponents/SideMenu.dart';
 import 'package:apptesting/Home/View/ListItem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,21 +14,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.blue.shade700
+    ));
+
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.amber,
-      ),
       home: MyHomePage(title: 'Testing App'),
+      theme: ThemeData(
+        primaryColor: Platform.isIOS ? CupertinoColors.tertiarySystemBackground : Colors.blue,
+        scaffoldBackgroundColor: CupertinoColors.tertiarySystemGroupedBackground,
+      ),
+      darkTheme: ThemeData.dark(),
     );
   }
 }
@@ -68,20 +71,19 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(icon: Icon(Icons.menu), onPressed: (){debugPrint("asd");},color: Colors.amber,),
-        centerTitle: true,title: Image(image: Image.asset("assets/images/general_logo_Socio.png").image,height: 25,),
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(12),
-            child:Image.asset("assets/images/img_notification.png"),
-          )]
+      drawer: SideMenu(),
+      body:
+          SafeArea(
+            bottom: false,
+            top: Platform.isAndroid,
+            child: CustomScrollView(
+              slivers: <Widget>[
+                AppStandardBar().build(context),
+                SliverList(delegate: SliverChildListDelegate([SafeArea(child:ListItem())]),)
+              ],
+            ),
+          )
 
-      ),
-      body: Container(
-        child: ListItem(),
-      )
     );
   }
 

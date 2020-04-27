@@ -5,5 +5,6 @@ class ListModel{
   final String author;
   final List<Image> image;
   final Image icon;
-  ListModel(this.title, this.author, this.icon, this.image);
+  bool favorite;
+  ListModel(this.title, this.author, this.icon, this.image, this.favorite);
 }

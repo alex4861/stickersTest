@@ -6,30 +6,55 @@ class ListViewModel{
   List<ListModel> getData(){
     return
       [new ListModel(
+
           "Title 1","Author 1",
-          Image.asset('assets/images/Group.png',fit: BoxFit.cover),
-          [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),]
+          Image.asset('assets/images/icon1.png',fit: BoxFit.cover),
+          [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),],
+        false
       ),
         new ListModel(
             "Title 2","Author 1",
             Image.asset('assets/images/icon1.png',fit: BoxFit.cover),
-            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),]
+            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),],
+            false
         ),
         new ListModel(
             "Title 3","Author 1",
             Image.asset('assets/images/Group.png',fit: BoxFit.cover),
-            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),]
+            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),],
+            false
         ),
         new ListModel(
             "Title 1","Author 1",
-            Image.asset('assets/images/Group.png',fit: BoxFit.cover),
-            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),]
+            Image.asset('assets/images/icon1.png',fit: BoxFit.cover),
+            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),],
+            false
         ),
         new ListModel(
             "Title 3","Author 1",
             Image.asset('assets/images/Group.png',fit: BoxFit.cover),
-            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),]
+            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),],
+            false
         ),
+        new ListModel(
+            "Title 3","Author 1",
+            Image.asset('assets/images/Group.png',fit: BoxFit.cover),
+            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),],
+            false
+        ),
+        new ListModel(
+            "Title 3","Author 1",
+            Image.asset('assets/images/icon1.png',fit: BoxFit.cover),
+            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),],
+            false
+        ),
+        new ListModel(
+            "Title 3","Author 1",
+            Image.asset('assets/images/Group.png',fit: BoxFit.cover),
+            [Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/Group.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),Image.asset('assets/images/icon1.png',fit: BoxFit.cover),],
+            false
+        ),
+
 
       ];
   }
