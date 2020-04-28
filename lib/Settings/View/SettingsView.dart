@@ -1,24 +1,21 @@
 import 'package:apptesting/BaseComponents/AppStandardBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 
 class SettingsView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    AppStandardBackBar appBar = AppStandardBackBar();
-    appBar.pinned = false;
     return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
+      body: CustomScrollView(
           slivers: <Widget>[
-            appBar,
+            AppStandardBackBar(context, pinned: true,title: "Settings",),
             SliverList(delegate: SliverChildListDelegate([SafeArea( child:SettingList())]),)
           ],
 
         ),
-      ),
     );
   }
 }
@@ -27,34 +24,29 @@ class SettingList extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Container(
+    return
+       SafeArea(
         child: new ListView(
           children: <Widget>[
             Ink(
               child:ListTile(
                 title: Text("Custom Colors"),
                 leading: Icon(Icons.view_quilt),
-                dense: true,
               ),
-              color: CupertinoColors.tertiarySystemBackground,
             ),
             Ink(
               child:ListTile(
                 title: Text("Notifications"),
                 leading: Icon(Icons.notifications),
-                dense: true,
 
               ),
-              color: CupertinoColors.tertiarySystemBackground,
             ),
             Ink(
               child:ListTile(
                 title: Text("Language"),
                 leading: Icon(Icons.translate),
-                dense: true,
 
               ),
-              color: CupertinoColors.tertiarySystemBackground,
             ),
             Ink(
               child:ListTile(
@@ -63,7 +55,6 @@ class SettingList extends StatelessWidget{
                 dense: true,
 
               ),
-              color: CupertinoColors.tertiarySystemBackground,
             ),
 
           ],
@@ -77,11 +68,3 @@ class SettingList extends StatelessWidget{
     return Container(child: Text("uno"),);
   }
 }
-
-//ListView.builder(
-//          scrollDirection: Axis.vertical,
-//          shrinkWrap: true,
-//          physics: ScrollPhysics(),
-//          itemCount: 3,
-//          itemBuilder: (BuildContext context, int index)=> card(context, index),
-//        )
