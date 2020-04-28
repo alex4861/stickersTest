@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
           brightness: brightness,
           primaryColor: Theme.of(context).brightness == Brightness.dark ? Colors.blue: null,
           scaffoldBackgroundColor: Theme.of(context).brightness == Brightness.dark ? CupertinoColors.tertiarySystemGroupedBackground: null,
+          highlightColor: Colors.blue,accentColor: Colors.blue
 
         ),
         themedWidgetBuilder: (context, theme) {

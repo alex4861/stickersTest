@@ -59,6 +59,7 @@ class _SideMenuState extends State<SideMenu> {
                   ),
 
                     CupertinoSwitch(
+                      activeColor: Colors.blueAccent,
                       onChanged: (bool value) {
                         setState(() {
                           DynamicTheme
