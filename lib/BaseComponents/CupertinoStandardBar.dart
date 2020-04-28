@@ -1,30 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CupertinoStandardBackBar extends StatelessWidget {
+class CupertinoAppStandardBackBar extends StatefulWidget {
+  CupertinoAppStandardBackBar(BuildContext context, {this.pinned, this.title});
+  final pinned;
+  final String title;
   @override
-  Widget build(BuildContext context) {
-
-    return  CupertinoNavigationBar(
-      middle: Image(image: Image.asset("assets/images/general_logo_Socio.png").image,height: 25,),
-      trailing: Padding(
-            padding: EdgeInsets.all(12),
-            child:Image.asset("assets/images/img_notification.png"),
-          ),);
-  }
-
+  _CupertinoAppStandardBackBarState createState() => _CupertinoAppStandardBackBarState(pinned:pinned, title: title);
 }
-class CupertinoStandardBar extends StatelessWidget {
+
+
+class _CupertinoAppStandardBackBarState extends State<CupertinoAppStandardBackBar> {
+  _CupertinoAppStandardBackBarState({this.pinned, this.title});
+  final bool pinned;
+  String previousTitle;
+  String title;
+
   @override
   Widget build(BuildContext context) {
 
-    return  CupertinoNavigationBar(
-      leading:IconButton(icon: Icon(Icons.menu), onPressed: null),
-      middle: Text("Page one"),
-      trailing: Padding(
-        padding: EdgeInsets.all(12),
-        child:Image.asset("assets/images/img_notification.png"),
-      ),);
+    // TODO: implement build
+    return CupertinoSliverNavigationBar(
+      automaticallyImplyTitle: true,
+      largeTitle: Text(title ?? ""),
+      previousPageTitle: previousTitle,
+      actionsForegroundColor: Colors.white, backgroundColor: Colors.blue,);
   }
-
 }
