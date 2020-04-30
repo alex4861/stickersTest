@@ -17,6 +17,8 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  provider: ^4.0.5+1
+  curved_navigation_bar: ^0.1.2 #latest version
   dynamic_theme: ^1.0.1
   flutter:
     sdk: flutter

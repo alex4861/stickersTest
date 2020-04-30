@@ -44,6 +44,7 @@ class AppStandardBar extends StatelessWidget {
         indicatorColor: Theme.of(context).brightness == Brightness.dark? Colors.blueAccent: Colors.white,
         labelColor: Theme.of(context).brightness == Brightness.dark? Colors.blueAccent: Colors.white,
         unselectedLabelColor: Theme.of(context).brightness == Brightness.dark? Colors.blueGrey: Colors.white70,
+        indicatorPadding: EdgeInsets.symmetric(horizontal: 30),
     ),
       floating: true,
       pinned: pinned?? true,
