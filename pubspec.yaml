@@ -18,8 +18,10 @@ environment:
 
 dependencies:
   provider: ^4.0.5+1
-  curved_navigation_bar: ^0.1.2 #latest version
+  flutter_colorpicker: ^0.3.4
   dynamic_theme: ^1.0.1
+  shared_preferences: ^0.5.7
+
   flutter:
     sdk: flutter
 

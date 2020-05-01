@@ -32,7 +32,7 @@ class _SideMenuState extends State<SideMenu> {
                   )
                 )
             ),
-            decoration: BoxDecoration(color:Theme.of(context).brightness == Brightness.light? Colors.blue: null),
+            decoration: BoxDecoration(color:Theme.of(context).brightness == Brightness.light? DynamicTheme.of(context).data.primaryColor: null),
           ),
 
           ListTile(

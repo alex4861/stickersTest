@@ -1,4 +1,5 @@
 import 'package:apptesting/BaseComponents/AppStandardBar.dart';
+import 'package:apptesting/Colors/View/ColorsView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -32,6 +33,13 @@ class SettingList extends StatelessWidget{
               child:ListTile(
                 title: Text("Custom Colors"),
                 leading: Icon(Icons.view_quilt),
+                onTap:() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ColorsView())
+                  );
+                }
               ),
             ),
             Ink(
