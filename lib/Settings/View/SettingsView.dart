@@ -1,4 +1,4 @@
-import 'package:apptesting/BaseComponents/AppStandardBar.dart';
+import 'package:apptesting/BaseComponents/AppBarPinned.dart';
 import 'package:apptesting/Colors/View/ColorsView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +10,9 @@ class SettingsView extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      appBar: BackBarPinned(context, title: "Settings").build(context),
       body: CustomScrollView(
           slivers: <Widget>[
-            AppStandardBackBar(context, pinned: true,title: "Settings",),
             SliverList(delegate: SliverChildListDelegate([SafeArea( child:SettingList())]),)
           ],
 
