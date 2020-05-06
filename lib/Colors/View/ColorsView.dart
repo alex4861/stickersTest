@@ -1,9 +1,11 @@
 import 'package:apptesting/BaseComponents/AppBarPinned.dart';
+import 'package:apptesting/BaseComponents/ThemeManager.dart';
 import 'package:apptesting/Colors/ViewModel/ColorPreferences.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ColorsView extends StatefulWidget{
@@ -18,31 +20,9 @@ class _ColorsViewState extends State<ColorsView> {
   Color tertiary = Color(0xFFFFFF);
 
 
-  getColor(String type) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      switch (type){
-        case "Primary":
-          primary = Color(prefs.getInt(type) ?? 0);
-          break;
-        case "Secondary":
-          secondary = Color(prefs.getInt(type) ?? 0);
-          break;
-
-        case "Tertiary":
-          tertiary = Color(prefs.getInt(type) ?? 0);
-          break;
-      }
-      debugPrint(Color(prefs.getInt(type)).toString());
-    });
-
-  }
   @override
   void initState() {
     super.initState();
-    getColor(CustomTheme().color(ThemeColor.primaryColor));
-    getColor("Secondary");
-    getColor("Tertiary");
   }
 
   Color pickerColor = Color(0xff443a49);
@@ -92,24 +72,20 @@ class _ColorsViewState extends State<ColorsView> {
                       actions: <Widget>[
 
                         FlatButton(
-                          child: const Text('Cancel'),
+                          child: Text('Cancel', style: TextStyle(color: Theme.of(context).textTheme.title.color)),
                           onPressed: () {
                             setState(() => primary = previousColor);
                             Navigator.of(context).pop();
                           },
                         ),
                         FlatButton(
-                          child: const Text('Save'),
+                          child: Text('Save',style: TextStyle(color: Theme.of(context).textTheme.title.color)),
                           onPressed: () {
 
                             setState(() => currentColor = primary);
                             setState(() {
-                              setColor(CustomTheme().color(ThemeColor.primaryColor), currentColor);
-                              DynamicTheme.of(context).setThemeData(ThemeData(
-                                  primaryColor: currentColor
-                              )
-                              );
-
+                              var provider = Provider.of<ThemeManager>(context);
+                              provider.setColor(currentColor, context);
                             });
                             Navigator.of(context).pop();
                           },
