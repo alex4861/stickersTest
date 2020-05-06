@@ -3,24 +3,28 @@ import 'package:flutter/material.dart';
 
 class AppBarPinned extends StatelessWidget{
   final String title;
-  final Color color;
-  AppBarPinned(BuildContext context, {this.title, this.color});
+  AppBarPinned(BuildContext context, {this.title});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return AppBar(leading: Builder(
       builder: (context) => IconButton(
-          icon: Icon(Icons.menu, color: Colors.white,),
+          icon: Icon(Icons.menu),
           onPressed: (){
             Scaffold.of(context).openDrawer();
           }
       ),
     ),
       title: Text(title ?? ""),
-      backgroundColor: color,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(12),
+              bottomLeft: Radius.circular(12),
+            )
+        )
     );
   }
-  
+
 }
 class BackBarPinned extends StatelessWidget{
   final String title;
@@ -29,8 +33,15 @@ class BackBarPinned extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return AppBar(
-      leading: BackButton(color:Theme.of(context).brightness == Brightness.dark ? Colors.blue: Colors.white,),
-      title: Text(title ?? ""),);
+      leading: BackButton(),
+      title: Text(title ?? ""),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(12),
+              bottomLeft: Radius.circular(12),
+            )
+        )
+    );
   }
 
 }

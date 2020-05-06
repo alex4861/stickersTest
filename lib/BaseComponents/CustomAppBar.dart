@@ -10,7 +10,7 @@ class CustomTabBar extends StatelessWidget{
     return AppBar(
         leading: Builder(
           builder: (context) => IconButton(
-              icon: Icon(Icons.menu, color: Theme.of(context).brightness == Brightness.dark ? Colors.blue :Colors.white,),
+              icon: Icon(Icons.menu, color: Theme.of(context).appBarTheme.color,),
               onPressed: (){
                 Scaffold.of(context).openDrawer();
               }
