@@ -1,10 +1,11 @@
 import 'package:apptesting/Settings/View/SettingsView.dart';
-import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'ThemeManager.dart';
 
 class SideMenu extends StatefulWidget{
   SideMenu(BuildContext context);
@@ -27,12 +28,12 @@ class _SideMenuState extends State<SideMenu> {
                 child:Text(
                   'Bienvenido\nUsername',
                   style: TextStyle(
-                      color:Colors.white,
+                      color:Theme.of(context).brightness == Brightness.light ? Theme.of(context).primaryTextTheme.title.color : null,
                       fontSize: 25
                   )
                 )
             ),
-            decoration: BoxDecoration(color:Theme.of(context).brightness == Brightness.light? DynamicTheme.of(context).data.primaryColor: null),
+            decoration: BoxDecoration(color:Theme.of(context).brightness == Brightness.light? Theme.of(context).primaryColor: null),
           ),
 
           ListTile(
@@ -59,19 +60,11 @@ class _SideMenuState extends State<SideMenu> {
                   ),
 
                     CupertinoSwitch(
-                      activeColor: Colors.blueAccent,
+                      activeColor: Theme.of(context).primaryColor,
                       onChanged: (bool value) {
                         setState(() {
-                          DynamicTheme
-                              .of(context)
-                              .setBrightness(value ? Brightness.dark:Brightness.light);
-
-                          SystemChrome.setSystemUIOverlayStyle(
-                              SystemUiOverlayStyle(
-                                  statusBarColor: Theme.of(context).brightness == Brightness.light ? Colors.grey.shade700 : Colors.blue.shade700
-                              )
-                          );
-                          debugPrint("Esta en modo ${DynamicTheme.of(context).brightness}");
+                          var provider = Provider.of<ThemeManager>(context);
+                          value ? provider.setBrightness(Brightness.dark, context):provider.setBrightness(Brightness.light, context);
 
                         });
                         },
