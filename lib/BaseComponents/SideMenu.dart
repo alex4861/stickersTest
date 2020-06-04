@@ -41,7 +41,7 @@ class _SideMenuState extends State<SideMenu> {
             title: Text("settings"),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsView()));
-              Scaffold.of(context).openEndDrawer();
+              Scaffold.of(context).openDrawer();
             },
           ),
 
@@ -61,15 +61,16 @@ class _SideMenuState extends State<SideMenu> {
 
                     CupertinoSwitch(
                       activeColor: Theme.of(context).primaryColor,
-                      onChanged: (bool value) {
+                      onChanged:(bool value) {
                         setState(() {
                           var provider = Provider.of<ThemeManager>(context);
+                          print(Theme.of(context));
                           value ? provider.setBrightness(Brightness.dark, context):provider.setBrightness(Brightness.light, context);
 
                         });
                         },
                       value: Theme.of(context).brightness == Brightness.dark,
-                      dragStartBehavior: DragStartBehavior.start,)
+                      dragStartBehavior: DragStartBehavior.start,),
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),

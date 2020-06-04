@@ -21,6 +21,7 @@ dependencies:
   flutter_colorpicker: ^0.3.4
   dynamic_theme: ^1.0.1
   shared_preferences: ^0.5.7
+  image_picker: ^0.6.6+1
 
   flutter:
     sdk: flutter
@@ -79,3 +80,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+fonts:
+  - family: SF Pro Display
+    fonts:
+      - asset: fonts/SF-Pro-Display-Bold.otf
+        weight: 700 # Bold

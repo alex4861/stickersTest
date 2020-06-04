@@ -5,6 +5,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeManager with ChangeNotifier{
   ThemeData _themeData;
+  bool isSystemDark = true;
+  ThemeData get themeDataDark{
+    isSystemDark = false;
+    var theme = _themeData;
+    var primarySwatch = getMaterialColor(theme.primaryColor);
+    _themeData = ThemeData(
+        primaryColor: primarySwatch,
+        brightness: Brightness.dark,
+        accentColor: primarySwatch,
+        primarySwatch:primarySwatch,
+        appBarTheme: AppBarTheme(
+          color:  primarySwatch,
+        ),
+    );
+    return _themeData;
+  }
   ThemeData get themeData{
     if(_themeData == null){
       debugPrint("setting default value");
@@ -48,6 +64,14 @@ class ThemeManager with ChangeNotifier{
     var prefs = await SharedPreferences.getInstance();
     prefs.setInt(_mode, Brightness.values.indexOf(brightness));
 
+  }
+
+  _set(Brightness value, BuildContext context) async {
+    await setBrightness(value, context);
+  }
+
+  set(Brightness value, BuildContext context){
+    setBrightness(value, context);
   }
   setColor(Color primaryColor, BuildContext context) async{
     MaterialColor primarySwatch = getMaterialColor(primaryColor);

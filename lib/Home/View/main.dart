@@ -4,9 +4,13 @@ import 'package:apptesting/BaseComponents/AppBarPinned.dart';
 import 'package:apptesting/BaseComponents/SideMenu.dart';
 import 'package:apptesting/BaseComponents/ThemeManager.dart';
 import 'package:apptesting/Home/View/ListItem.dart';
+import 'package:apptesting/Profile/View/Profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+
+import 'components/TabBarView.dart';
 
 
 main()  => runApp(MyApp());
@@ -30,6 +34,7 @@ class _MyAppState extends State<MyApp> {
             create: (BuildContext context) => BottomNavigationBarProvider(),
           ),
           theme: manager.themeData,
+          darkTheme: manager.themeDataDark,
         );
       },
       ),
@@ -62,15 +67,37 @@ class _MyHomePageState extends State<MyHomePage> {
         length: 5,
         child:
         Scaffold(
-          drawer: SideMenu(context),
+            drawerEdgeDragWidth: 60,
+            drawerScrimColor: Theme.of(context).primaryColor.withOpacity(.4),
+            drawer: SideMenu(context),
           appBar: AppBarPinned(context, title: widget.title).build(context),
           body:  TabBarView(
             children: [
-              ListItem(),
-              Container(child:Center(child:Text("uno"))),
+              CustomScrollView(
+                slivers: <Widget>[
+                  SliverList(delegate: SliverChildListDelegate([ListItem()]),)
+                ],
+              ),
+              Container(
+                  child:Column(children: <Widget>[
+                    IconButton(onPressed: () async {
+                      imageA = await ImagePicker.pickImage(
+                          source: ImageSource.gallery
+                      );
+
+                      if ( imageA != null ) {
+
+                      }
+
+                      setState(() {});
+                    },icon: Icon(Icons.image)),
+                    CustomTabBarView(context).galleryPicture()
+                  ],)
+
+              ),
               Container(child:Center(child:Text("dos"))),
               Container(child:Center(child:Text("tres"))),
-              Container(child:Center(child:Text("cuatro"))),
+              Profile(),
             ],
           ),
             bottomNavigationBar: bottomTabBar
@@ -78,12 +105,25 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
   }
+  File imageA;
+  FileImage image;
+
+
+
+
+  Widget _galleryPicture() {
+      return Image(
+        image: imageA != null? FileImage(imageA) :  AssetImage('assets/images/icon1.png'),
+        height: 300.0,
+        fit: BoxFit.cover,
+      );
+  }
 
   Widget get bottomTabBar{
         return
           Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
+                color: Theme.of(context).scaffoldBackgroundColor,
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                     color: Colors.black54.withOpacity(.5),
@@ -94,19 +134,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               child:SafeArea(
                 child: TabBar(
-                  indicatorSize: TabBarIndicatorSize.label,
+                  indicatorSize: (TabBarIndicatorSize.label),
                   indicatorPadding: EdgeInsets.symmetric(vertical: 46),
                   indicatorColor: Theme.of(context).primaryColor,
                   unselectedLabelColor: Colors.red,
                   tabs: [
                     Tab(
-                        icon: Icon(CupertinoIcons.home, color: Theme.of(context).primaryColor,)
+                        icon: Icon(Icons.home, color: Theme.of(context).primaryColor, size: 30,)
                     ),
                     Tab(
-                      icon: Icon(CupertinoIcons.search, color: Theme.of(context).primaryColor,),
+                      icon: Icon(Icons.search, color: Theme.of(context).primaryColor, size: 30,),
                     ),
                     Tab(
-                      icon: Icon(Icons.favorite_border, color: Theme.of(context).primaryColor,),
+                      icon: Icon(Icons.favorite_border, color: Theme.of(context).primaryColor, size: 30,),
                     ),
                     Tab(
                       icon: Icon(Icons.hourglass_empty, color: Theme.of(context).primaryColor,),

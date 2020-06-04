@@ -7,21 +7,9 @@ class AppBarPinned extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return AppBar(leading: Builder(
-      builder: (context) => IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: (){
-            Scaffold.of(context).openDrawer();
-          }
-      ),
-    ),
+    return AppBar(
       title: Text(title ?? ""),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(12),
-              bottomLeft: Radius.circular(12),
-            )
-        )
+
     );
   }
 
@@ -33,14 +21,8 @@ class BackBarPinned extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return AppBar(
-      leading: BackButton(),
       title: Text(title ?? ""),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(12),
-              bottomLeft: Radius.circular(12),
-            )
-        )
+        leading: BackButton()
     );
   }
 

@@ -71,8 +71,9 @@ class _AppStandardBackBarState extends State<AppStandardBackBar> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SliverAppBar(leading: BackButton(color:Theme.of(context).brightness == Brightness.dark ? Colors.blue: Colors.white,),
+    return SliverAppBar(
       title: Text(title ?? ""),
+      leading: BackButton(),
       floating: true,
       pinned: pinned,
     );
